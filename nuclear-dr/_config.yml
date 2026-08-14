@@ -1,14 +1,15 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Dimensionality Reduction in Nuclear Physics
+title: Introduction to Nuclear Density Functional Theory
 author: Advanced Scientific Computing and Statistics Network
-logo: logo.png
+# logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  # execute_notebooks: force
+  execute_notebooks: "off"
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -21,7 +22,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/ascsn/nuclear-dimensionality-reduction-book
+  url: https://github.com/ascsn/dft-video-resources
   path_to_book: nuclear-dr  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 

@@ -3,20 +3,20 @@
 
 format: jb-book
 root: landing
-chapters:
-- file: introduction/introduction
-  sections:
-    - file: introduction/emulators
-# - file: ho/1dHO
-- file: ho/1dHO
-- file: scattering/scattering
-- file: scattering/eim
-- file: HO_Time/HO_Time_Dependent
-- file: blackbox_galerkin/Introduction
-  sections:
-      - file: blackbox_galerkin/SECAR
-      - file: blackbox_galerkin/DFT_Toy_Model
-- file: in-progress/introduction
-  sections:
-      - file: in-progress/HarmonicIntro
-- file: contributors
+parts:
+  - caption: Getting Started
+    chapters:
+      - file: intro
+
+  - caption: Hands-On Tutorials
+    chapters:
+      - file: tutorials/baby_dft
+
+  - caption: Future Applications
+    chapters:
+      - file: applications/spherical_nuclei
+      # - file: applications/pairing_and_deformation
+
+  - caption: Community
+    chapters:
+      - file: contributors
