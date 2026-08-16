@@ -27,14 +27,14 @@ jobs:
           pip install "jupyter-book<1.0.0"
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # Build the book from repository root
+      # Build the book from the subfolder
       - name: Build the book
         run: |
-          jupyter-book build .
+          jupyter-book build nuclear-dr/
 
       # Push the book's HTML to gh-pages branch
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build/html
+          publish_dir: nuclear-dr/_build/html
