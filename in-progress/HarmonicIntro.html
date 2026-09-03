@@ -497,18 +497,18 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">FDM</span><span class="p">:</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">timingInt</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        The two parameters are h and the timing integer. </span>
 <span class="sd">        The number of points on the matrix is decided by h. A smaller h value means more points, but also more time to run. </span>
 <span class="sd">        The second parameter is the timing integer. The purpose of this value will become clearer in the timing function. </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timingInt</span> <span class="o">=</span> <span class="n">timingInt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_max</span> <span class="o">=</span> <span class="mf">10.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_max</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
         
     <span class="k">def</span><span class="w"> </span><span class="nf">xShape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># This is used for creating the m matrix later on, but doesn&#39;t play much of a role in finding the solutions. </span>
+        <span class="c1"># This is used for creating the m matrix later on, but doesn't play much of a role in finding the solutions. </span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">hf_second_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -537,10 +537,10 @@ document.write(`
         <span class="k">return</span> <span class="o">-</span><span class="n">D2Mat</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">vpot</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">timing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        In the timing function, we solve the solution many times and get the average of the times. </span>
 <span class="sd">        This helps to boost the accuracy of the time value. The timingInt value determines how many times to collect. </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">solveTime</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timingInt</span><span class="p">):</span>
             <span class="n">time0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -567,13 +567,13 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_alphas</span><span class="p">(</span><span class="n">usage</span><span class="p">):</span>
     <span class="c1"># Set a seed for reproducibility</span>
-    <span class="k">if</span> <span class="n">usage</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">usage</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"test"</span><span class="p">:</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
         <span class="n">N_test</span> <span class="o">=</span> <span class="mi">20</span>
         <span class="n">lower_bound_int</span> <span class="o">=</span> <span class="mf">0.5</span>
         <span class="n">upper_bound_int</span> <span class="o">=</span> <span class="mi">30</span>
         <span class="n">random_integers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">lower_bound_int</span><span class="p">,</span> <span class="n">upper_bound_int</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_test</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">usage</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">usage</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"train"</span><span class="p">:</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">98</span><span class="p">)</span>
         <span class="n">N_test</span> <span class="o">=</span> <span class="mi">30</span>
         <span class="n">lower_bound_int</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -587,7 +587,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">HF_solutions</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
-    <span class="n">alphas</span> <span class="o">=</span> <span class="n">get_alphas</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+    <span class="n">alphas</span> <span class="o">=</span> <span class="n">get_alphas</span><span class="p">(</span><span class="s2">"train"</span><span class="p">)</span>
     
     <span class="n">timingInt</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">tempTimes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -596,7 +596,7 @@ document.write(`
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)):</span>
         <span class="n">alpha</span> <span class="o">=</span> <span class="n">alphas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="c1"># We used the classes&#39; function HO_solver() to solve the equation for different alpha values</span>
+        <span class="c1"># We used the classes' function HO_solver() to solve the equation for different alpha values</span>
         <span class="n">evals</span><span class="p">,</span> <span class="n">evects</span><span class="p">,</span> <span class="n">t1me</span><span class="p">,</span> <span class="n">m_val</span> <span class="o">=</span> <span class="n">fdm_instance</span><span class="o">.</span><span class="n">HO_solver</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
 
         <span class="c1"># We use our exact solution to compare to the calculated eigenvalue</span>
@@ -647,7 +647,7 @@ document.write(`
 <span class="n">h</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="mi">1</span>
 <span class="n">fdm_instance</span> <span class="o">=</span> <span class="n">FDM</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">timingInt</span><span class="p">)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">x_shape</span> <span class="o">=</span> <span class="n">fdm_instance</span><span class="o">.</span><span class="n">xShape</span><span class="p">()</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">get_alphas</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">get_alphas</span><span class="p">(</span><span class="s2">"train"</span><span class="p">)</span>
 <span class="c1"># The different solutions are stored in the m matrix</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span> <span class="n">x_shape</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)):</span>
@@ -662,9 +662,9 @@ document.write(`
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)):</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Super Plot :)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Wave Functions&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Super Plot :)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Wave Functions"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -693,25 +693,25 @@ document.write(`
 
 <span class="c1"># Thank you ChatGPT for the following colors!</span>
 <span class="n">hcolors</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;#9467bd&quot;</span><span class="p">,</span>  <span class="c1"># Purple</span>
-    <span class="c1"># &quot;#1a9850&quot;,  # Emerald Green</span>
-        <span class="s2">&quot;#4575b4&quot;</span><span class="p">,</span>  <span class="c1"># Steel Blue</span>
-    <span class="s2">&quot;#d73027&quot;</span><span class="p">,</span>  <span class="c1"># Crimson Red</span>
+    <span class="s2">"#9467bd"</span><span class="p">,</span>  <span class="c1"># Purple</span>
+    <span class="c1"># "#1a9850",  # Emerald Green</span>
+        <span class="s2">"#4575b4"</span><span class="p">,</span>  <span class="c1"># Steel Blue</span>
+    <span class="s2">"#d73027"</span><span class="p">,</span>  <span class="c1"># Crimson Red</span>
 
-    <span class="c1"># &quot;#fdae61&quot;,  # Apricot</span>
-    <span class="s2">&quot;#313695&quot;</span>   <span class="c1"># Midnight Blue</span>
+    <span class="c1"># "#fdae61",  # Apricot</span>
+    <span class="s2">"#313695"</span>   <span class="c1"># Midnight Blue</span>
 <span class="p">]</span>
 
 
 <span class="n">catFig</span><span class="p">,</span> <span class="n">catAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h_list</span><span class="p">)):</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;HF h = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">"HF h = "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">catAx</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">htimes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">herrors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">hcolors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-               <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+               <span class="n">marker</span><span class="o">=</span><span class="s1">'.'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
-<span class="n">catAx</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span><span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span>
-           <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Eigenvalue Relative Error&#39;</span><span class="p">,</span>
+<span class="n">catAx</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">'log'</span><span class="p">,</span><span class="n">yscale</span><span class="o">=</span><span class="s1">'log'</span><span class="p">,</span>
+           <span class="n">xlabel</span><span class="o">=</span><span class="s1">'Time (s)'</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">'Eigenvalue Relative Error'</span><span class="p">,</span>
            <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">hminT</span><span class="p">,</span> <span class="n">hmaxT</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">hminEr</span><span class="p">,</span><span class="n">hmaxEr</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -735,29 +735,29 @@ document.write(`
 \[ (\frac{d^2}{dx^2} + \alpha x^2 - \lambda )\phi(x) = 0 \]</div>
 <p>However, we can put forth a reformulation of the math.</p>
 <p>Because we are solving an eigenvalue problem, we can arrive at a set of different-looking equations, using the same set of judges <span class="math notranslate nohighlight">\(\{\psi_i(x)\}_{i=1}^n\)</span> as before. We can simply plug <span class="math notranslate nohighlight">\(\hat{\phi}_{\alpha_k}\)</span> into the Schrodinger equation and project both sides onto the judges, writing</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7f9aaf2b-ee13-4fc6-8a3c-82d8f1667106">
-<span class="eqno">()<a class="headerlink" href="#equation-7f9aaf2b-ee13-4fc6-8a3c-82d8f1667106" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-64d0c7f6-ddb8-4aef-b1cd-fae5cab0816f">
+<span class="eqno">()<a class="headerlink" href="#equation-64d0c7f6-ddb8-4aef-b1cd-fae5cab0816f" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{i=1}^na_i\langle \psi_j|H_{\alpha_k}|\phi_i\rangle=\lambda\sum_{i=1}^na_i\langle\psi_j|\phi_i\rangle.
 \end{align}\]</div>
 <p>Define now two matrices:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e5948b35-085a-4531-8f77-802f42d5fb07">
-<span class="eqno">()<a class="headerlink" href="#equation-e5948b35-085a-4531-8f77-802f42d5fb07" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2d99e090-0ec8-4d34-aab8-b21f7cb6ebcf">
+<span class="eqno">()<a class="headerlink" href="#equation-2d99e090-0ec8-4d34-aab8-b21f7cb6ebcf" title="Permalink to this equation">#</a></span>\[\begin{align}
 M_{ij}(\alpha)\equiv \langle\psi_j|H_\alpha|\phi_i\rangle,\quad N_{ij}\equiv\langle\psi_j|\phi_i\rangle.
 \end{align}\]</div>
 <p>These are both <span class="math notranslate nohighlight">\(n\times n\)</span> matrices, and we now have a generalized eigenvalue problem for <span class="math notranslate nohighlight">\(\vec{a}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-829c21a1-d88b-4c84-9c4f-dfdba2c39353">
-<span class="eqno">()<a class="headerlink" href="#equation-829c21a1-d88b-4c84-9c4f-dfdba2c39353" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-21a7248f-c1b3-430a-99dc-302f1b30a8d0">
+<span class="eqno">()<a class="headerlink" href="#equation-21a7248f-c1b3-430a-99dc-302f1b30a8d0" title="Permalink to this equation">#</a></span>\[\begin{align}
 M(\alpha)\vec{a}=\lambda N\vec{a}.
 \end{align}\]</div>
 <p>Situationally, this may be quicker to solve than finding the roots of the nonlinear system that results from the “traditional” RBM approach.</p>
 <p>As with traditional RBM approaches, this is only helpful if we can evaluate <span class="math notranslate nohighlight">\(M(\alpha)\)</span> quickly for different <span class="math notranslate nohighlight">\(\alpha\)</span> values. For the HO, this is not too hard: we can write</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb8f7a38-98db-4888-a551-19ea222cdca7">
-<span class="eqno">()<a class="headerlink" href="#equation-fb8f7a38-98db-4888-a551-19ea222cdca7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a01dfa02-e07c-4f57-a8e1-91de7c193686">
+<span class="eqno">()<a class="headerlink" href="#equation-a01dfa02-e07c-4f57-a8e1-91de7c193686" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle\psi_j|H_\alpha|\phi_i\rangle=\langle\psi_j|T|\phi_i\rangle+\alpha\langle \psi_j|x^2|\phi_i\rangle\equiv M_{ij}^{(0)}+\alpha M_{ij}^{(1)}.
 \end{align}\]</div>
 <p>Our eigenvalue equation is then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c3d2e9e5-0fc4-43d2-9559-07cf578c7e27">
-<span class="eqno">()<a class="headerlink" href="#equation-c3d2e9e5-0fc4-43d2-9559-07cf578c7e27" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d14ce2b0-8a03-4bd2-b35a-8f03b40e1645">
+<span class="eqno">()<a class="headerlink" href="#equation-d14ce2b0-8a03-4bd2-b35a-8f03b40e1645" title="Permalink to this equation">#</a></span>\[\begin{align}
 [M^{(0)}+\alpha M^{(1)}]\vec{a}=\lambda N\vec{a},
 \end{align}\]</div>
 <p>and all of <span class="math notranslate nohighlight">\(M^{(0)},M^{(1)}\)</span> and <span class="math notranslate nohighlight">\(N\)</span> can be precomputed.</p>
@@ -866,8 +866,8 @@ M(\alpha)\vec{a}=\lambda N\vec{a}.
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">RBM_instance</span><span class="o">.</span><span class="n">getReducedBasis</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Reduced Basis&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Reduced Basis"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -885,28 +885,28 @@ M(\alpha)\vec{a}=\lambda N\vec{a}.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We use the same h value as the high fidelity solution, but different alpha values</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">get_alphas</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">get_alphas</span><span class="p">(</span><span class="s2">"test"</span><span class="p">)</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="mi">1</span>
 <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#ff7f0e&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#2ca02c&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#d62728&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#9467bd&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#8c564b&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#e377c2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#7f7f7f&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#bcbd22&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#17becf&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#c93a2a&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#28688f&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#5b165d&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#3b7b33&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#ad7a26&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#21445f&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;#9c5f7c&quot;</span><span class="p">,</span>
+    <span class="s2">"#1f77b4"</span><span class="p">,</span>
+    <span class="s2">"#ff7f0e"</span><span class="p">,</span>
+    <span class="s2">"#2ca02c"</span><span class="p">,</span>
+    <span class="s2">"#d62728"</span><span class="p">,</span>
+    <span class="s2">"#9467bd"</span><span class="p">,</span>
+    <span class="s2">"#8c564b"</span><span class="p">,</span>
+    <span class="s2">"#e377c2"</span><span class="p">,</span>
+    <span class="s2">"#7f7f7f"</span><span class="p">,</span>
+    <span class="s2">"#bcbd22"</span><span class="p">,</span>
+    <span class="s2">"#17becf"</span><span class="p">,</span>
+    <span class="s2">"#c93a2a"</span><span class="p">,</span>
+    <span class="s2">"#28688f"</span><span class="p">,</span>
+    <span class="s2">"#5b165d"</span><span class="p">,</span>
+    <span class="s2">"#3b7b33"</span><span class="p">,</span>
+    <span class="s2">"#ad7a26"</span><span class="p">,</span>
+    <span class="s2">"#21445f"</span><span class="p">,</span>
+    <span class="s2">"#9c5f7c"</span><span class="p">,</span>
 <span class="p">]</span>
 <span class="n">catFig</span><span class="p">,</span> <span class="n">catAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 <span class="c1"># We change the components and the alpha values for checking</span>
@@ -934,7 +934,7 @@ M(\alpha)\vec{a}=\lambda N\vec{a}.
   <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">icolor</span><span class="p">]</span>
   <span class="n">icolor</span><span class="o">=</span><span class="n">icolor</span><span class="o">+</span><span class="mi">1</span>
   <span class="n">catAx</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">times</span><span class="p">,</span><span class="n">errors</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;RBM Basis =&quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">comp</span><span class="p">))</span>
+            <span class="n">marker</span><span class="o">=</span><span class="s1">'.'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"RBM Basis ="</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">comp</span><span class="p">))</span>
 
 <span class="n">hminT</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">hmaxT</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -942,23 +942,23 @@ M(\alpha)\vec{a}=\lambda N\vec{a}.
 <span class="n">hmaxEr</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">hcolors</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;#9467bd&quot;</span><span class="p">,</span>  <span class="c1"># Purple</span>
-    <span class="c1"># &quot;#1a9850&quot;,  # Emerald Green</span>
-        <span class="s2">&quot;#4575b4&quot;</span><span class="p">,</span>  <span class="c1"># Steel Blue</span>
-    <span class="s2">&quot;#d73027&quot;</span><span class="p">,</span>  <span class="c1"># Crimson Red</span>
+    <span class="s2">"#9467bd"</span><span class="p">,</span>  <span class="c1"># Purple</span>
+    <span class="c1"># "#1a9850",  # Emerald Green</span>
+        <span class="s2">"#4575b4"</span><span class="p">,</span>  <span class="c1"># Steel Blue</span>
+    <span class="s2">"#d73027"</span><span class="p">,</span>  <span class="c1"># Crimson Red</span>
 
-    <span class="c1"># &quot;#fdae61&quot;,  # Apricot</span>
-    <span class="s2">&quot;#313695&quot;</span>   <span class="c1"># Midnight Blue</span>
+    <span class="c1"># "#fdae61",  # Apricot</span>
+    <span class="s2">"#313695"</span>   <span class="c1"># Midnight Blue</span>
 <span class="p">]</span>
 
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h_list</span><span class="p">)):</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;HF Grid spacing = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">"HF Grid spacing = "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">catAx</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">htimes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">herrors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">hcolors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-               <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+               <span class="n">marker</span><span class="o">=</span><span class="s1">'.'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
-<span class="n">catAx</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span><span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span>
-           <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Eigenvalue Relative Error&#39;</span><span class="p">,</span>
+<span class="n">catAx</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">'log'</span><span class="p">,</span><span class="n">yscale</span><span class="o">=</span><span class="s1">'log'</span><span class="p">,</span>
+           <span class="n">xlabel</span><span class="o">=</span><span class="s1">'Time (s)'</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">'Eigenvalue Relative Error'</span><span class="p">,</span>
            <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">hminT</span><span class="p">,</span> <span class="n">hmaxT</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">hminEr</span><span class="p">,</span><span class="n">hmaxEr</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>

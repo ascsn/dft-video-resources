@@ -483,8 +483,8 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;ToyMdelData/test.json&quot;</span><span class="p">)</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;ToyMdelData/train.json&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">"ToyMdelData/test.json"</span><span class="p">)</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">"ToyMdelData/train.json"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -550,9 +550,9 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; High fidelity Hamiltonian &#39;&#39;&#39;</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">row</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rho_maker</span><span class="p">([</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;wave_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hamiltonian&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">row</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">high_fid_hamil</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;kappa&#39;</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">])),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">''' High fidelity Hamiltonian '''</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'density'</span><span class="p">]</span>     <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">row</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rho_maker</span><span class="p">([</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'wave_'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'hamiltonian'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">row</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">high_fid_hamil</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'density'</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">'alpha'</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">'kappa'</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">'q'</span><span class="p">])),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">extend_dataframe</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
 <span class="n">extend_dataframe</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
@@ -571,19 +571,19 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <li><p>Minimize the <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_norm">Frobenius norm</a> between some model for our operator and the numerical hamiltonian. The Frobenius norm is the generalization of the regular euclidian norm between vectors (or L2 norm in the case of functions).</p></li>
 </ul>
 <p>Since all other points should be familiar by now we will concentrate on the last one. The model we will have for our Hamiltonian is a polynomial feature model on the parameters <span class="math notranslate nohighlight">\(\alpha_i\)</span> of the data:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb251d40-ff04-470d-9984-6297b4f25ac0">
-<span class="eqno">()<a class="headerlink" href="#equation-fb251d40-ff04-470d-9984-6297b4f25ac0" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-3cbe866e-44a3-40cd-add1-31db4228b097">
+<span class="eqno">()<a class="headerlink" href="#equation-3cbe866e-44a3-40cd-add1-31db4228b097" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 \mathcal H_{ij} = (H_0)_{ij} + (H_1)^k_{ij}\alpha_k + (H_2)^{kl}_{ij}\alpha_k\alpha_l + (H_3)^{klm}_{ij} \alpha_k\alpha_l\alpha_m+\cdots 
 \end{equation}\]</div>
 <p>The minimization problem is then:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b3629f04-6beb-4e6b-b953-741f8a21ac5c">
-<span class="eqno">()<a class="headerlink" href="#equation-b3629f04-6beb-4e6b-b953-741f8a21ac5c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-11f7eff3-08b2-432b-94f2-928019800ba8">
+<span class="eqno">()<a class="headerlink" href="#equation-11f7eff3-08b2-432b-94f2-928019800ba8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{H_I}|| \mathcal H_{model} - \mathcal H_{data} ||_F
 \end{equation}\]</div>
 <p>It is important to note that in this approach the minimization problem factorizes into component-wise quadratic programming minimization porblems, which can be solved in parallel and analytically.</p>
 <p>This model has the disadvantage that the number of parameters grows exponentially on the order that one wishes to use. Sparsity promoting approaches, such an L1 or <a class="reference external" href="https://en.wikipedia.org/wiki/Lasso_(statistics)">Lasso regularization</a> is a good choice to deal with a situation where we have more coefficients than data values. Because we might be interested in allowing for high order polynomial features we also consider the LASSO regularized minimization problem:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cd2eb90e-95c9-4428-8f85-8ac1cb43d14a">
-<span class="eqno">()<a class="headerlink" href="#equation-cd2eb90e-95c9-4428-8f85-8ac1cb43d14a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-32cc4dbe-ccc0-4b99-b1c7-361ff97d3ed0">
+<span class="eqno">()<a class="headerlink" href="#equation-32cc4dbe-ccc0-4b99-b1c7-361ff97d3ed0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min_{H_I}|| \mathcal H_{model} - \mathcal H_{data} ||_F + \lambda ||\mathcal H_{model}||_1
 \end{equation}\]</div>
 <p>as a means to promote sparsity on the coefficients <span class="math notranslate nohighlight">\(H_I\)</span>.</p>
@@ -597,8 +597,8 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Fitter</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;hamiltonians&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pars</span>         <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pars&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'hamiltonians'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pars</span>         <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'pars'</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dim</span>          <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nPars</span>        <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pars</span><span class="p">)</span>
     
@@ -618,43 +618,43 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Sklearn</span><span class="p">(</span><span class="n">Fitter</span><span class="p">):</span>
 <span class="w">    </span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39; Sklearn fitter wrapper &#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">''' Sklearn fitter wrapper '''</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ord</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;order&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ord</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"order"</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;fitter&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;LeastSquares&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'fitter'</span><span class="p">]</span><span class="o">==</span><span class="s2">"LeastSquares"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;fitter&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Lasso&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'fitter'</span><span class="p">]</span><span class="o">==</span><span class="s2">"Lasso"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span> <span class="o">=</span> <span class="n">LassoLarsCV</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FitterNotImplemented</span><span class="p">()</span>
             
     <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Allocate space for all the tensors H0, H1, H2, ... &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Allocate space for all the tensors H0, H1, H2, ... '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">poly</span>      <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ord</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">poly_feat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pars</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hs</span>        <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly_feat</span><span class="p">[</span><span class="mi">0</span><span class="p">]))]</span>
         
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">):</span>
-<span class="w">                </span><span class="sd">&#39;&#39;&#39; We now build a new vector out of the features &#39;&#39;&#39;</span>
+<span class="w">                </span><span class="sd">''' We now build a new vector out of the features '''</span>
                 <span class="n">y_axis</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nPars</span><span class="p">)</span> <span class="p">]</span>
             
                 <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly_feat</span><span class="p">,</span><span class="n">y_axis</span><span class="p">)</span>
 <span class="w">                </span>
-<span class="w">                </span><span class="sd">&#39;&#39;&#39; Sklearn stores the order zero under a different name &#39;&#39;&#39;</span>
+<span class="w">                </span><span class="sd">''' Sklearn stores the order zero under a different name '''</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span><span class="o">.</span><span class="n">intercept_</span>
 <span class="w">                </span>
-<span class="w">                </span><span class="sd">&#39;&#39;&#39; All others are together &#39;&#39;&#39;</span>
+<span class="w">                </span><span class="sd">''' All others are together '''</span>
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly_feat</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Create the polynomial features of the data &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Create the polynomial features of the data '''</span>
         <span class="n">poly_feat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">pars</span><span class="p">])</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Build the Hamiltonian &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Build the Hamiltonian '''</span>
         <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="p">):</span>
             <span class="n">hamiltonian</span> <span class="o">+=</span> <span class="n">h</span><span class="o">*</span><span class="n">poly_feat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
@@ -674,9 +674,9 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Frobenius</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">waves</span>  <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;waves&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hamils</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;hamiltonian&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pars</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pars&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">waves</span>  <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'waves'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hamils</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'hamiltonian'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pars</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'pars'</span><span class="p">]</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">nWaves</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waves</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nPars</span>  <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pars</span><span class="p">)</span>
@@ -685,17 +685,17 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Function to predict both eigenvalues and eigenfucntions &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Function to predict both eigenvalues and eigenfucntions '''</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fitter</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pars</span><span class="p">))</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Predict wavefunctions in real, high-fidelity space &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Predict wavefunctions in real, high-fidelity space '''</span>
         <span class="n">evl</span><span class="p">,</span><span class="n">evc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_all</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
         <span class="n">waves</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">evc</span><span class="p">[:,:</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">waves</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">nWaves</span><span class="p">]</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Predict the radius &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Predict the radius '''</span>
         <span class="n">rho</span> <span class="o">=</span> <span class="n">rho_maker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_rsp</span><span class="p">(</span><span class="n">pars</span><span class="p">))</span>
         <span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">):]</span>
         <span class="n">R</span>   <span class="o">=</span> <span class="mi">0</span>
@@ -708,29 +708,29 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
     
     <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;dimension&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ord</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'dimension'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ord</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'order'</span><span class="p">]</span>
 <span class="w">        </span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Fisrt we build the local basis &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Fisrt we build the local basis '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>  <span class="p">)</span>
 <span class="w">        </span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; We now build a reduced Hamiltonian to set as the target for minimization &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' We now build a reduced Hamiltonian to set as the target for minimization '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span> <span class="o">=</span> <span class="p">[]</span>
         
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">pars</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pars</span><span class="p">):</span>
             
             <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
 <span class="w">            </span>
-<span class="w">            </span><span class="sd">&#39;&#39;&#39; Project onto pc space &#39;&#39;&#39;</span>
+<span class="w">            </span><span class="sd">''' Project onto pc space '''</span>
             <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hamils</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">)</span>
             
         <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span><span class="p">)</span>
 <span class="w">        </span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Build the fitter &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Build the fitter '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span> <span class="o">=</span> <span class="n">Sklearn</span><span class="p">(</span><span class="n">hamiltonians</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonians</span><span class="p">,</span>
                               <span class="n">pars</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pars</span><span class="p">,</span>
-                              <span class="n">fitter</span>       <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;fitter&#39;</span><span class="p">],</span>
+                              <span class="n">fitter</span>       <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'fitter'</span><span class="p">],</span>
                               <span class="n">order</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ord</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitter</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 </pre></div>
@@ -744,19 +744,19 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_set</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">label</span><span class="p">):</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nWaves</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">pars</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span><span class="s1">&#39;kappa&#39;</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">pars</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'alpha'</span><span class="p">,</span><span class="s1">'kappa'</span><span class="p">,</span><span class="s1">'q'</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
         <span class="n">evl</span><span class="p">,</span><span class="n">evc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_all</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nWaves</span><span class="p">):</span>
-            <span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">evl</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;eigenvalues&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]))</span>
+            <span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">evl</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">'eigenvalues'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]))</span>
     
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">nWaves</span><span class="p">):</span>
         <span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span> <span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="o">+</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">+</span><span class="s2">&quot; set error&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Configuration #&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="n">label</span><span class="o">=</span><span class="s1">'E'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="s2">": "</span><span class="o">+</span><span class="sa">f</span><span class="s1">'[</span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">errors</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">]'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">+</span><span class="s2">" set error"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'center left'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Configuration #"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">errors</span>
 </pre></div>
@@ -768,9 +768,9 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <p>First we build them</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frobenius</span> <span class="o">=</span> <span class="n">Frobenius</span><span class="p">(</span><span class="n">waves</span>        <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;wave_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">],</span>
-                      <span class="n">hamiltonian</span>  <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;hamiltonian&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                      <span class="n">pars</span>         <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span><span class="s1">&#39;kappa&#39;</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frobenius</span> <span class="o">=</span> <span class="n">Frobenius</span><span class="p">(</span><span class="n">waves</span>        <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">'wave_'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">],</span>
+                      <span class="n">hamiltonian</span>  <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">'hamiltonian'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                      <span class="n">pars</span>         <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s1">'alpha'</span><span class="p">,</span><span class="s1">'kappa'</span><span class="p">,</span><span class="s1">'q'</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -779,7 +779,7 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dimension</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">order</span>     <span class="o">=</span> <span class="mi">3</span>
-<span class="n">fitter</span>    <span class="o">=</span> <span class="s2">&quot;LeastSquares&quot;</span>
+<span class="n">fitter</span>    <span class="o">=</span> <span class="s2">"LeastSquares"</span>
 
 <span class="n">frobenius</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span><span class="n">fitter</span><span class="o">=</span><span class="n">fitter</span><span class="p">)</span>
 </pre></div>
@@ -789,8 +789,8 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <p>Now we test them</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error_test</span>  <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_test</span> <span class="p">,</span><span class="s2">&quot;Test&quot;</span> <span class="p">)</span>
-<span class="n">error_train</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_train</span><span class="p">,</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error_test</span>  <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_test</span> <span class="p">,</span><span class="s2">"Test"</span> <span class="p">)</span>
+<span class="n">error_train</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_train</span><span class="p">,</span><span class="s2">"Train"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,8 +799,8 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">error_test</span> <span class="p">,</span><span class="n">corr_test</span>  <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_test</span> <span class="p">,</span><span class="s2">&quot;Test&quot;</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">error_train</span><span class="p">,</span><span class="n">corr_train</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_train</span><span class="p">,</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">error_test</span> <span class="p">,</span><span class="n">corr_test</span>  <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_test</span> <span class="p">,</span><span class="s2">"Test"</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">error_train</span><span class="p">,</span><span class="n">corr_train</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">frobenius</span><span class="p">,</span><span class="n">df_train</span><span class="p">,</span><span class="s2">"Train"</span><span class="p">)</span>
 
 <span class="ne">ValueError</span>: too many values to unpack (expected 2)
 </pre></div>
@@ -818,44 +818,44 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SequentialFrobenius</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">waves</span>     <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;waves&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pars</span>      <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pars&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hamil</span>     <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;hamiltonian&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">waves</span>     <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'waves'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pars</span>      <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'pars'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hamil</span>     <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'hamiltonian'</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nWaves</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waves</span><span class="p">)</span>
 <span class="w">        </span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Splices the data and feeds it to several Frobenius &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Splices the data and feeds it to several Frobenius '''</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emulators</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Frobenius</span><span class="p">(</span><span class="n">waves</span><span class="o">=</span><span class="p">[</span><span class="n">wave</span><span class="p">],</span>
                                      <span class="n">hamiltonian</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hamil</span><span class="p">,</span>
                                      <span class="n">pars</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pars</span><span class="p">)</span> <span class="k">for</span> <span class="n">wave</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">waves</span> <span class="p">]</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dimension</span><span class="p">,</span><span class="n">order</span><span class="p">,</span><span class="n">fitter</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Build each fitter &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Build each fitter '''</span>
         <span class="k">for</span> <span class="n">emul</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">emulators</span><span class="p">:</span>
             <span class="n">emul</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">dimension</span> <span class="o">=</span> <span class="n">dimension</span><span class="p">,</span>
                        <span class="n">order</span>     <span class="o">=</span> <span class="n">order</span><span class="p">,</span>
                        <span class="n">fitter</span>    <span class="o">=</span> <span class="n">fitter</span><span class="p">)</span>
             
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Collect each prediction and add them all up &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Collect each prediction and add them all up '''</span>
         <span class="n">evl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nWaves</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">emul</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emulators</span><span class="p">):</span>
             <span class="n">evl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">emul</span><span class="o">.</span><span class="n">predict_all</span><span class="p">(</span><span class="n">pars</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">evl</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Return all energies and wavefunctions &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Return all energies and wavefunctions '''</span>
         <span class="n">res</span> <span class="o">=</span> <span class="p">[</span> <span class="n">emul</span><span class="o">.</span><span class="n">predict_all</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span> <span class="k">for</span> <span class="n">emul</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">emulators</span> <span class="p">]</span>
         <span class="n">energies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="n">res</span> <span class="p">])</span>
         <span class="n">waves</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="n">res</span> <span class="p">])</span>
         <span class="k">return</span> <span class="n">energies</span><span class="p">,</span><span class="n">waves</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Returns the real space wavefunctions &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Returns the real space wavefunctions '''</span>
         <span class="n">waves</span> <span class="o">=</span> <span class="p">[</span> <span class="n">emul</span><span class="o">.</span><span class="n">predict_rsp</span><span class="p">(</span><span class="n">pars</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">emul</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">emulators</span> <span class="p">]</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">predict_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pars</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; Computes the radius &#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">''' Computes the radius '''</span>
         <span class="n">rho</span> <span class="o">=</span> <span class="n">rho_maker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_rsp</span><span class="p">(</span><span class="n">pars</span><span class="p">))</span>
         <span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">):]</span>
         <span class="n">R</span>   <span class="o">=</span> <span class="mi">0</span>
@@ -869,9 +869,9 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <p>We are ready to test these</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq_frobenius</span> <span class="o">=</span> <span class="n">SequentialFrobenius</span><span class="p">(</span><span class="n">waves</span>         <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;wave_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">],</span>
-                                    <span class="n">hamiltonian</span>   <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;hamiltonian&#39;</span><span class="p">],</span>
-                                    <span class="n">pars</span>          <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span><span class="s1">&#39;kappa&#39;</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq_frobenius</span> <span class="o">=</span> <span class="n">SequentialFrobenius</span><span class="p">(</span><span class="n">waves</span>         <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">'wave_'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">],</span>
+                                    <span class="n">hamiltonian</span>   <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">'hamiltonian'</span><span class="p">],</span>
+                                    <span class="n">pars</span>          <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s1">'alpha'</span><span class="p">,</span><span class="s1">'kappa'</span><span class="p">,</span><span class="s1">'q'</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -881,7 +881,7 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dimension</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">order</span>     <span class="o">=</span> <span class="mi">6</span>
-<span class="n">fitter</span>    <span class="o">=</span> <span class="s2">&quot;Lasso&quot;</span>
+<span class="n">fitter</span>    <span class="o">=</span> <span class="s2">"Lasso"</span>
 
 <span class="n">seq_frobenius</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span><span class="n">fitter</span><span class="o">=</span><span class="n">fitter</span><span class="p">)</span>
 </pre></div>
@@ -891,8 +891,8 @@ R = \int  dx\hskip0.1cmx^2 \rho(x)
 <p>Display their errors</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq_error_test</span>  <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">seq_frobenius</span><span class="p">,</span><span class="n">df_test</span> <span class="p">,</span><span class="s2">&quot;Test&quot;</span> <span class="p">)</span>
-<span class="n">seq_error_train</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">seq_frobenius</span><span class="p">,</span><span class="n">df_train</span><span class="p">,</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq_error_test</span>  <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">seq_frobenius</span><span class="p">,</span><span class="n">df_test</span> <span class="p">,</span><span class="s2">"Test"</span> <span class="p">)</span>
+<span class="n">seq_error_train</span> <span class="o">=</span> <span class="n">test_set</span><span class="p">(</span><span class="n">seq_frobenius</span><span class="p">,</span><span class="n">df_train</span><span class="p">,</span><span class="s2">"Train"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
