@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On Tutorials</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/baby_dft.html">Baby’s first DFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/baby_dft.html">An introductory DFT code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Future Applications</span></p>
 <ul class="nav bd-sidenav">
@@ -449,31 +449,31 @@ document.write(`
 <h1>Application 1: The Quantum Harmonic Oscillator<a class="headerlink" href="#application-1-the-quantum-harmonic-oscillator" title="Permalink to this heading">#</a></h1>
 <p>Contributed by: Daniel Lay, Eric Flynn</p>
 <p>The Schrodinger equation for the 1d harmonic oscillator (HO) is usually written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-00637896-37c4-4858-8d51-f7b78e7b3ecb">
-<span class="eqno">()<a class="headerlink" href="#equation-00637896-37c4-4858-8d51-f7b78e7b3ecb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-22fbac4f-5ad2-4c65-b17c-ba8b6813daba">
+<span class="eqno">()<a class="headerlink" href="#equation-22fbac4f-5ad2-4c65-b17c-ba8b6813daba" title="Permalink to this equation">#</a></span>\[\begin{align}
 H_\alpha\phi(x)\equiv \bigg(-\frac{d^2}{dx^2}+\alpha x^2\bigg)\phi(x)=\lambda\phi(x),\quad \langle\phi|\phi\rangle=1,
 \end{align}\]</div>
 <p>where, for comparison with textbooks, the eigenvalue is <span class="math notranslate nohighlight">\(\lambda=2mE/\hbar^2\)</span> and the HO parameter is <span class="math notranslate nohighlight">\(\alpha=(m\omega/\hbar)^2\)</span>. A useful distinction is the kinetic and potential energy terms:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ec63dff1-9edc-434f-8cc5-57516fc6067a">
-<span class="eqno">()<a class="headerlink" href="#equation-ec63dff1-9edc-434f-8cc5-57516fc6067a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e19b80d4-5b5b-4cd6-a8d4-d7398658f5a7">
+<span class="eqno">()<a class="headerlink" href="#equation-e19b80d4-5b5b-4cd6-a8d4-d7398658f5a7" title="Permalink to this equation">#</a></span>\[\begin{align}
 T\phi(x)=-\frac{d^2}{dx^2}\phi(x),\quad V_\alpha(x)\phi(x)=\alpha x^2\phi(x),\quad H_\alpha(x)=T+V(x).
 \end{align}\]</div>
 <p>Technically, all of <span class="math notranslate nohighlight">\(T,V_\alpha\)</span>, and <span class="math notranslate nohighlight">\(H_\alpha\)</span> are operators, but if we discretize our wavefunction (in order to, say, put it on a computer), they are just matrices.</p>
 <section id="traditional-rbm">
 <h2>“Traditional” RBM<a class="headerlink" href="#traditional-rbm" title="Permalink to this heading">#</a></h2>
 <p>To use the traditional RBM approach, one option is to rewrite the Schrodinger equation as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5ed7bd61-9173-4631-a66c-bc22f64c1a6c">
-<span class="eqno">()<a class="headerlink" href="#equation-5ed7bd61-9173-4631-a66c-bc22f64c1a6c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-79b50149-730d-4f24-8071-c5be4d962da1">
+<span class="eqno">()<a class="headerlink" href="#equation-79b50149-730d-4f24-8071-c5be4d962da1" title="Permalink to this equation">#</a></span>\[\begin{align}
 \bigg(-\frac{d^2}{dx^2}+\alpha x^2-\lambda\bigg)\phi(x)\equiv F_\alpha(\phi(x))=0,
 \end{align}\]</div>
 <p>defining the operator <span class="math notranslate nohighlight">\(F_\alpha\)</span>, and solving the system</p>
-<div class="amsmath math notranslate nohighlight" id="equation-316411a7-e998-4e88-99e6-5bf2e2aad5d9">
-<span class="eqno">()<a class="headerlink" href="#equation-316411a7-e998-4e88-99e6-5bf2e2aad5d9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2e79cbd3-4887-4b6a-a436-f83d8961c5f0">
+<span class="eqno">()<a class="headerlink" href="#equation-2e79cbd3-4887-4b6a-a436-f83d8961c5f0" title="Permalink to this equation">#</a></span>\[\begin{align}
 F_\alpha(\phi(x))=0,\quad\langle\phi|\phi\rangle=1.
 \end{align}\]</div>
 <p>We then solve this for a set of parameters <span class="math notranslate nohighlight">\(\{\alpha_i\}_{i=1}^n\)</span>, and for any arbitrary parameter <span class="math notranslate nohighlight">\(\alpha_k\)</span>, take as our ansatz</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9354231c-bd8f-432f-953f-69fedcfb7178">
-<span class="eqno">()<a class="headerlink" href="#equation-9354231c-bd8f-432f-953f-69fedcfb7178" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0287bf8d-6545-4338-98aa-3ef5ba65c9a8">
+<span class="eqno">()<a class="headerlink" href="#equation-0287bf8d-6545-4338-98aa-3ef5ba65c9a8" title="Permalink to this equation">#</a></span>\[\begin{align}
 	\hat{\phi}_{\alpha_{k}}(x) = \sum_{i=1}^{n} a_{i} \phi_{i}(x) .
 \end{align}\]</div>
 <p>This is a nice form, as it is straightforward to generalize to non-eigenvalue problems.</p>
@@ -605,29 +605,29 @@ F_\alpha(\phi(x))=0,\quad\langle\phi|\phi\rangle=1.
 <section id="a-slight-reformulation">
 <h2>A Slight Reformulation<a class="headerlink" href="#a-slight-reformulation" title="Permalink to this heading">#</a></h2>
 <p>Because we are solving an eigenvalue problem, we can arrive at a set of different-looking equations, using the same set of judges <span class="math notranslate nohighlight">\(\{\psi_i(x)\}_{i=1}^n\)</span> as before. We can simply plug <span class="math notranslate nohighlight">\(\hat{\phi}_{\alpha_k}\)</span> into the Schrodinger equation and project both sides onto the judges, writing</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f7e566c3-6b9e-4fbd-9f3a-b81bc668eea5">
-<span class="eqno">()<a class="headerlink" href="#equation-f7e566c3-6b9e-4fbd-9f3a-b81bc668eea5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1824c0d8-0837-48e3-9f26-3016c0fe3daa">
+<span class="eqno">()<a class="headerlink" href="#equation-1824c0d8-0837-48e3-9f26-3016c0fe3daa" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{i=1}^na_i\langle \psi_j|H_{\alpha_k}|\phi_i\rangle=\lambda\sum_{i=1}^na_i\langle\psi_j|\phi_i\rangle.
 \end{align}\]</div>
 <p>Define now two matrices:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7ac4a546-4a9e-44ee-9082-660d0dbcd1c4">
-<span class="eqno">()<a class="headerlink" href="#equation-7ac4a546-4a9e-44ee-9082-660d0dbcd1c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c19ca13a-2760-4cc3-b60a-c8b96eb79cd7">
+<span class="eqno">()<a class="headerlink" href="#equation-c19ca13a-2760-4cc3-b60a-c8b96eb79cd7" title="Permalink to this equation">#</a></span>\[\begin{align}
 M_{ij}(\alpha)\equiv \langle\psi_j|H_\alpha|\phi_i\rangle,\quad N_{ij}\equiv\langle\psi_j|\phi_i\rangle.
 \end{align}\]</div>
 <p>These are both <span class="math notranslate nohighlight">\(n\times n\)</span> matrices, and we now have a generalized eigenvalue problem for <span class="math notranslate nohighlight">\(\vec{a}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50154f1e-8fd1-4b6d-a917-6f2a2d7f4e27">
-<span class="eqno">()<a class="headerlink" href="#equation-50154f1e-8fd1-4b6d-a917-6f2a2d7f4e27" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-77ebbf70-fc5c-41e5-9c0e-6248228e93e9">
+<span class="eqno">()<a class="headerlink" href="#equation-77ebbf70-fc5c-41e5-9c0e-6248228e93e9" title="Permalink to this equation">#</a></span>\[\begin{align}
 M(\alpha)\vec{a}=\lambda N\vec{a}.
 \end{align}\]</div>
 <p>Situationally, this may be quicker to solve than finding the roots of the nonlinear system that results from the “traditional” RBM approach.</p>
 <p>As with traditional RBM approaches, this is only helpful if we can evaluate <span class="math notranslate nohighlight">\(M(\alpha)\)</span> quickly for different <span class="math notranslate nohighlight">\(\alpha\)</span> values. For the HO, this is not too hard: we can write</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d958c38d-b9bb-4411-9e13-6f5b1c01a2f7">
-<span class="eqno">()<a class="headerlink" href="#equation-d958c38d-b9bb-4411-9e13-6f5b1c01a2f7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c907611d-94ee-46f4-91c8-4d107b64ae9d">
+<span class="eqno">()<a class="headerlink" href="#equation-c907611d-94ee-46f4-91c8-4d107b64ae9d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle\psi_j|H_\alpha|\phi_i\rangle=\langle\psi_j|T|\phi_i\rangle+\alpha\langle \psi_j|x^2|\phi_i\rangle\equiv M_{ij}^{(0)}+\alpha M_{ij}^{(1)}.
 \end{align}\]</div>
 <p>Our eigenvalue equation is then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2fd964c4-b3bc-4028-9b17-8bd32dbb5dfc">
-<span class="eqno">()<a class="headerlink" href="#equation-2fd964c4-b3bc-4028-9b17-8bd32dbb5dfc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4df54586-4e09-4fab-abe1-037c0a8353b4">
+<span class="eqno">()<a class="headerlink" href="#equation-4df54586-4e09-4fab-abe1-037c0a8353b4" title="Permalink to this equation">#</a></span>\[\begin{align}
 [M^{(0)}+\alpha M^{(1)}]\vec{a}=\lambda N\vec{a},
 \end{align}\]</div>
 <p>and all of <span class="math notranslate nohighlight">\(M^{(0)},M^{(1)}\)</span> and <span class="math notranslate nohighlight">\(N\)</span> can be precomputed.</p>
@@ -748,14 +748,14 @@ RBM relative error: 7.248e-05
 <section id="variational-rbm">
 <h2>Variational RBM<a class="headerlink" href="#variational-rbm" title="Permalink to this heading">#</a></h2>
 <p>For many physicists, the first thing to try is the variational approach to solving the Schrodinger equation. We can attempt the same thing, except using the expansion coefficients <span class="math notranslate nohighlight">\(\vec{a}\)</span> as variational coefficients. This, as far as I am aware, is what is known as “eigenvector continuation,” although different people mean different things when mentioning eigenvector continuation. In general, the variational energy is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54e43332-fd4f-4a6f-8a0c-458c28a50f30">
-<span class="eqno">()<a class="headerlink" href="#equation-54e43332-fd4f-4a6f-8a0c-458c28a50f30" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3f6654eb-7554-4832-85df-3207e0815752">
+<span class="eqno">()<a class="headerlink" href="#equation-3f6654eb-7554-4832-85df-3207e0815752" title="Permalink to this equation">#</a></span>\[\begin{align}
 	E_\alpha(\vec{a})=\frac{\langle \phi_{\vec{a}}|H_\alpha|\phi_{\vec{a}}\rangle}{\langle \phi_{\vec{a}}|\phi_{\vec{a}}\rangle},
 \end{align}\]</div>
 <p>and by minimizing this energy with respect to the parameters <span class="math notranslate nohighlight">\(\vec{a}\)</span>, we approximate the ground state energy.</p>
 <p>For the HO, this is again fairly simple to write out, using the matrices from the previous section:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc0576dc-611a-471c-bfc8-1bf611dc6bde">
-<span class="eqno">()<a class="headerlink" href="#equation-fc0576dc-611a-471c-bfc8-1bf611dc6bde" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f4af8298-eaaa-4cde-bd98-ac830607efce">
+<span class="eqno">()<a class="headerlink" href="#equation-f4af8298-eaaa-4cde-bd98-ac830607efce" title="Permalink to this equation">#</a></span>\[\begin{align}
 E_\alpha(\vec{a})=\frac{\vec{a}^T[M^{(0)}+\alpha M^{(1)}]\vec{a}}{\vec{a}^TN\vec{a}}.
 \end{align}\]</div>
 <p>To speed this up, we can also write out the gradient (and even the Hessian). While I will not write out either here, the code implementation below utilizes the gradient to speed up the calculation.</p>
@@ -886,24 +886,24 @@ RBM relative error: 7.248e-05
 <section id="inferring-the-reduced-hamiltonian">
 <h2>Inferring the Reduced Hamiltonian<a class="headerlink" href="#inferring-the-reduced-hamiltonian" title="Permalink to this heading">#</a></h2>
 <p>All of the above is fantastic: it speeds up the code versus a standard finite difference solver, without losing basically any accuracy. But, we are always required to compute overlaps of the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b5734805-a251-411b-a4fe-b0dfba0c64c5">
-<span class="eqno">()<a class="headerlink" href="#equation-b5734805-a251-411b-a4fe-b0dfba0c64c5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e4b24c59-6749-4b5d-a8b2-2224f455b643">
+<span class="eqno">()<a class="headerlink" href="#equation-e4b24c59-6749-4b5d-a8b2-2224f455b643" title="Permalink to this equation">#</a></span>\[\begin{align}
 M_{ij}(\alpha)\equiv \langle\psi_j|H_\alpha|\phi_i\rangle,
 \end{align}\]</div>
 <p>in a manner that is <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span> without much accuracy loss. Even for problems in which the parameter(s) appear in an affine manner (such as the HO), this can be time-consuming, especially given many parameters in the problem. It is even worse when parameters are not affine, and so to apply this to any particular problem uses a lot of development time thinking about implementation details.</p>
 <p>One work-around is to attempt to infer a simple form of <span class="math notranslate nohighlight">\(M(\alpha)\)</span>, say, <span class="math notranslate nohighlight">\(\hat{M}(\alpha)\)</span>, just based on the overlaps themselves. As an example, suppose we assume a quadratic polynomial in <span class="math notranslate nohighlight">\(\alpha\)</span>,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e223cfb6-b8a8-448f-9ba8-4269d33f37ae">
-<span class="eqno">()<a class="headerlink" href="#equation-e223cfb6-b8a8-448f-9ba8-4269d33f37ae" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cc54d8f0-6a37-4c3d-82fe-a16a48442143">
+<span class="eqno">()<a class="headerlink" href="#equation-cc54d8f0-6a37-4c3d-82fe-a16a48442143" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{M}(\alpha)\equiv M^{(0)}+\alpha M^{(1)}+\alpha^2M^{(2)}.
 \end{align}\]</div>
 <p>We can use our high-fidelity solutions <span class="math notranslate nohighlight">\(\{\phi_i\}\)</span> and judges <span class="math notranslate nohighlight">\(\{\psi_i\}\)</span>, compute the overlaps <span class="math notranslate nohighlight">\(M_{ij}(\alpha_k)\)</span> for <span class="math notranslate nohighlight">\(\alpha_k=\alpha_1,\ldots,\alpha_n\)</span>, and fit the coefficients of <span class="math notranslate nohighlight">\(\hat{M}\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-779bdcee-2b4a-4bb1-b54b-f43f2e2136ab">
-<span class="eqno">()<a class="headerlink" href="#equation-779bdcee-2b4a-4bb1-b54b-f43f2e2136ab" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-55240019-6476-4710-bf78-2a24e388a754">
+<span class="eqno">()<a class="headerlink" href="#equation-55240019-6476-4710-bf78-2a24e388a754" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{M}(\alpha_k)\approx M(\alpha_k),\quad k=1,\ldots,n.
 \end{align}\]</div>
 <p>This can be done coefficient-by-coefficient, to minimize the residual</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf5601e2-1499-4de5-b2b9-79f15bcc0945">
-<span class="eqno">()<a class="headerlink" href="#equation-bf5601e2-1499-4de5-b2b9-79f15bcc0945" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb0ae805-fc92-4423-932f-5ae8c8bb3a98">
+<span class="eqno">()<a class="headerlink" href="#equation-eb0ae805-fc92-4423-932f-5ae8c8bb3a98" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{k=1}^n[\hat{M}_{ij}(\alpha_k)-M_{ij}(\alpha_k)]^2.
 \end{align}\]</div>
 <p>No longer do you have to attempt to make the division made above (although it is simpler for the HO).</p>
