@@ -1,3 +1,3 @@
-# Baby's first DFT
+# An introductory DFT code
 
-skeleton for light DFT code.
+Check in to see an elementary example of a DFT calculation.
