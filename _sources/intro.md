@@ -1,3 +1,3 @@
 # Nuclear Density Functional Theory - intro
 
-Skeleton for page.
+We hope to add some introductory readings to nuclear Density Functional Theory to this page!

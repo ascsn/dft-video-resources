@@ -735,29 +735,29 @@ document.write(`
 \[ (\frac{d^2}{dx^2} + \alpha x^2 - \lambda )\phi(x) = 0 \]</div>
 <p>However, we can put forth a reformulation of the math.</p>
 <p>Because we are solving an eigenvalue problem, we can arrive at a set of different-looking equations, using the same set of judges <span class="math notranslate nohighlight">\(\{\psi_i(x)\}_{i=1}^n\)</span> as before. We can simply plug <span class="math notranslate nohighlight">\(\hat{\phi}_{\alpha_k}\)</span> into the Schrodinger equation and project both sides onto the judges, writing</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64d0c7f6-ddb8-4aef-b1cd-fae5cab0816f">
-<span class="eqno">()<a class="headerlink" href="#equation-64d0c7f6-ddb8-4aef-b1cd-fae5cab0816f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-84fcacf4-8378-4652-96f7-423b26a63948">
+<span class="eqno">()<a class="headerlink" href="#equation-84fcacf4-8378-4652-96f7-423b26a63948" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{i=1}^na_i\langle \psi_j|H_{\alpha_k}|\phi_i\rangle=\lambda\sum_{i=1}^na_i\langle\psi_j|\phi_i\rangle.
 \end{align}\]</div>
 <p>Define now two matrices:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d99e090-0ec8-4d34-aab8-b21f7cb6ebcf">
-<span class="eqno">()<a class="headerlink" href="#equation-2d99e090-0ec8-4d34-aab8-b21f7cb6ebcf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a1c3be36-2c38-455e-9df5-852e1f6d7aca">
+<span class="eqno">()<a class="headerlink" href="#equation-a1c3be36-2c38-455e-9df5-852e1f6d7aca" title="Permalink to this equation">#</a></span>\[\begin{align}
 M_{ij}(\alpha)\equiv \langle\psi_j|H_\alpha|\phi_i\rangle,\quad N_{ij}\equiv\langle\psi_j|\phi_i\rangle.
 \end{align}\]</div>
 <p>These are both <span class="math notranslate nohighlight">\(n\times n\)</span> matrices, and we now have a generalized eigenvalue problem for <span class="math notranslate nohighlight">\(\vec{a}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-21a7248f-c1b3-430a-99dc-302f1b30a8d0">
-<span class="eqno">()<a class="headerlink" href="#equation-21a7248f-c1b3-430a-99dc-302f1b30a8d0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5a5fb508-f524-4478-89bc-7a6a5b67b9d5">
+<span class="eqno">()<a class="headerlink" href="#equation-5a5fb508-f524-4478-89bc-7a6a5b67b9d5" title="Permalink to this equation">#</a></span>\[\begin{align}
 M(\alpha)\vec{a}=\lambda N\vec{a}.
 \end{align}\]</div>
 <p>Situationally, this may be quicker to solve than finding the roots of the nonlinear system that results from the “traditional” RBM approach.</p>
 <p>As with traditional RBM approaches, this is only helpful if we can evaluate <span class="math notranslate nohighlight">\(M(\alpha)\)</span> quickly for different <span class="math notranslate nohighlight">\(\alpha\)</span> values. For the HO, this is not too hard: we can write</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a01dfa02-e07c-4f57-a8e1-91de7c193686">
-<span class="eqno">()<a class="headerlink" href="#equation-a01dfa02-e07c-4f57-a8e1-91de7c193686" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-90e5b287-82cc-489e-93b1-1bfb3bad94dd">
+<span class="eqno">()<a class="headerlink" href="#equation-90e5b287-82cc-489e-93b1-1bfb3bad94dd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle\psi_j|H_\alpha|\phi_i\rangle=\langle\psi_j|T|\phi_i\rangle+\alpha\langle \psi_j|x^2|\phi_i\rangle\equiv M_{ij}^{(0)}+\alpha M_{ij}^{(1)}.
 \end{align}\]</div>
 <p>Our eigenvalue equation is then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d14ce2b0-8a03-4bd2-b35a-8f03b40e1645">
-<span class="eqno">()<a class="headerlink" href="#equation-d14ce2b0-8a03-4bd2-b35a-8f03b40e1645" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3bf1b100-235a-45d3-a79a-efd7028b1d3f">
+<span class="eqno">()<a class="headerlink" href="#equation-3bf1b100-235a-45d3-a79a-efd7028b1d3f" title="Permalink to this equation">#</a></span>\[\begin{align}
 [M^{(0)}+\alpha M^{(1)}]\vec{a}=\lambda N\vec{a},
 \end{align}\]</div>
 <p>and all of <span class="math notranslate nohighlight">\(M^{(0)},M^{(1)}\)</span> and <span class="math notranslate nohighlight">\(N\)</span> can be precomputed.</p>
